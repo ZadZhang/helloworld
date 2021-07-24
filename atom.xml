@@ -3,11 +3,11 @@
   <title>ZadZhang</title>
   
   
-  <link href="http://zhangzejia.com/atom.xml" rel="self"/>
+  <link href="https://zhangzejia.com/atom.xml" rel="self"/>
   
-  <link href="http://zhangzejia.com/"/>
+  <link href="https://zhangzejia.com/"/>
   <updated>2021-07-23T08:33:07.033Z</updated>
-  <id>http://zhangzejia.com/</id>
+  <id>https://zhangzejia.com/</id>
   
   <author>
     <name>ZadZhang</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://zhangzejia.com/2021/07/23/hello-world/"/>
-    <id>http://zhangzejia.com/2021/07/23/hello-world/</id>
+    <link href="https://zhangzejia.com/2021/07/23/hello-world/"/>
+    <id>https://zhangzejia.com/2021/07/23/hello-world/</id>
     <published>2021-07-23T08:33:07.033Z</published>
     <updated>2021-07-23T08:33:07.033Z</updated>
     
