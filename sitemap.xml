@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhangzejia.com/2021/07/24/Blog%E5%A4%87%E4%BB%BD/</loc>
+    
+    <lastmod>2021-07-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhangzejia.com/resources/index.html</loc>
     
     <lastmod>2021-07-24</lastmod>
@@ -29,13 +36,6 @@
     
   </url>
   
-  <url>
-    <loc>https://zhangzejia.com/2021/07/23/hello-world/</loc>
-    
-    <lastmod>2021-07-23</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>https://zhangzejia.com/</loc>
@@ -45,6 +45,27 @@
   </url>
 
   
+  <url>
+    <loc>https://zhangzejia.com/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2021-07-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangzejia.com/tags/hexo/</loc>
+    <lastmod>2021-07-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>https://zhangzejia.com/categories/blog/</loc>
+    <lastmod>2021-07-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
 </urlset>
