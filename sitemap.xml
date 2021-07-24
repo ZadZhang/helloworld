@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhangzejia.com/resources/index.html</loc>
+    
+    <lastmod>2021-07-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhangzejia.com/categories/index.html</loc>
+    
+    <lastmod>2021-07-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhangzejia.com/tags/index.html</loc>
+    
+    <lastmod>2021-07-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhangzejia.com/about/index.html</loc>
+    
+    <lastmod>2021-07-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhangzejia.com/2021/07/23/hello-world/</loc>
     
     <lastmod>2021-07-23</lastmod>
