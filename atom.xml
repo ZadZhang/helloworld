@@ -6,7 +6,7 @@
   <link href="https://zhangzejia.com/atom.xml" rel="self"/>
   
   <link href="https://zhangzejia.com/"/>
-  <updated>2021-07-24T07:13:17.320Z</updated>
+  <updated>2021-08-01T13:31:59.546Z</updated>
   <id>https://zhangzejia.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cookie With Session</title>
+    <link href="https://zhangzejia.com/2021/08/01/Cookie/"/>
+    <id>https://zhangzejia.com/2021/08/01/Cookie/</id>
+    <published>2021-08-01T12:28:23.000Z</published>
+    <updated>2021-08-01T13:31:59.546Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h2><p>我们都知道浏览器和服务器之间通过http协议进行通信，但是这种协议是<strong>无状态</strong>的，所以就导致了服务器无法获知是谁在访问，但是一些网页明显需要获知到底是谁在访问（例如某宝）所以为了解决这个问题先后出现了四种技术，分别是：<strong>隐藏表单域</strong>、<strong>URL重写</strong>、<strong>cookie</strong>、<strong>session</strong>。</p><h2 id="什么是-cookie、session"><a href="#什么是-cookie、session" class="headerlink" title="什么是 cookie、session"></a>什么是 cookie、session</h2><h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p><code>Cookie</code>是某些网站为了辨别用户身份，进行<strong>会话</strong>跟踪而储存在用户本地终端上的数据（通常经过加密），由用户客户端计算机暂时或永久保存的信息。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cookie 的获取及添加</span></span><br><span class="line">Cookie cookie = <span class="keyword">new</span> Cookie();</span><br><span class="line">resp.addCookie(cookie);</span><br><span class="line">Cookie[] cookies = req.getCookies();</span><br><span class="line">cookie.getName();</span><br><span class="line">cookie.getValue();</span><br><span class="line">cookie.setMaxAge(<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>); <span class="comment">// 设置存活时间的一天</span></span><br></pre></td></tr></table></figure><p><strong>cookie 比较重要的属性</strong></p><ul><li>NAME/VALUE: cookie通过键对值来存储</li><li>Expires: 过期时间</li></ul><p>浏览器对于Cookie的一些限制</p><ul><li>一个Cookie只能保存一个信息</li><li>一个web站点可以给浏览器发送多个cookie,最多存放20个人cookie</li><li>cookie 有大小限制4kb</li><li>300个cookie浏览器上限</li></ul><p>删除cookie</p><ul><li>设置cookie的存活时间为<strong>0</strong>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cookie.setMaxAge(<span class="number">0</span>);</span><br><span class="line">cookie.setPath(request.getContextPath());</span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure></li></ul><h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p><code>session</code>称为会话信息，位于web服务器上，主要负责访问者与网站之间的交互，当访问浏览器请求http地址时，将传递到web服务器上并与访问信息进行匹配， 当关闭网站时就表示会话已经结束，网站无法访问该信息了，所以它无法保存永久数据，我们无法访问以及禁用网站。</p><p>这里关闭网站时消失的是服务器分配给浏览器的<code>cookie</code>,一个<code>JSESSIONID</code>,服务器上数据是不会消失的。</p><ul><li>设置 session  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HttpSession session = req.getSession();</span><br><span class="line">session.setAttribute(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;IDEA&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (session.isNew())&#123;</span><br><span class="line">resp.getWriter().write(<span class="string">&quot;session创建成功，ID：&quot;</span>+ session.getId());</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">resp.getWriter().write(<span class="string">&quot;session已经在浏览器中存在了，ID：&quot;</span> + session.getId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li>获取 session  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HttpSession session = req.getSession();</span><br><span class="line">String name = (String) session.getAttribute(<span class="string">&quot;name&quot;</span>);</span><br></pre></td></tr></table></figure></li><li>销毁 session  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HttpSession session = req.getSession();</span><br><span class="line">session.removeAttribute(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">session.invalidate();</span><br></pre></td></tr></table></figure></li></ul><h3 id="cookie、-session的异同"><a href="#cookie、-session的异同" class="headerlink" title="cookie、 session的异同"></a>cookie、 session的异同</h3><ul><li>Cookie 是把用户的数据给写给用户的浏览器，浏览器保存。</li><li>Session 是把用户的数据写到用户独占Session中，服务端保存（保存重要的信息，减少服务器资源浪费）。</li><li>Session对象由服务创建。</li></ul>]]></content>
+    
+    
+    <summary type="html">cookie 与 session 的爱恨纠葛hh</summary>
+    
+    
+    
+    <category term="计算机网路" scheme="https://zhangzejia.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E8%B7%AF/"/>
+    
+    
+    <category term="Cookie" scheme="https://zhangzejia.com/tags/Cookie/"/>
+    
+    <category term="Session" scheme="https://zhangzejia.com/tags/Session/"/>
+    
+    <category term="浏览器存值" scheme="https://zhangzejia.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%80%BC/"/>
+    
+  </entry>
   
   <entry>
     <title>HEXO博客备份</title>
